@@ -1,28 +1,16 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Ingodo'),
     );
   }
 }
@@ -30,84 +18,243 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+class EmptyAppBar extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 
   @override
+  Size get preferredSize => Size(0.0, 0.0);
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+      primary: false,
+      appBar: EmptyAppBar(),
+      body: ListView(
+        children: <Widget>[
+          Stack(
+            children: <Widget>[
+              Container(
+                height: 200.0,
+                width: double.infinity,
+                color: Colors.green,
+              ),
+              Positioned(
+                  bottom: 150,
+                  left: -40,
+                  child: Container(
+                    height: 140,
+                    width: 140,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(70),
+                        color: Colors.green[100].withOpacity(0.1)),
+                  )),
+              Positioned(
+                  top: -120,
+                  left: 100,
+                  child: Container(
+                    height: 300,
+                    width: 300,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(150),
+                        color: Colors.green[100].withOpacity(0.1)),
+                  )),
+              Positioned(
+                  top: -50,
+                  left: 0,
+                  child: Container(
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Colors.green[100].withOpacity(0.1)),
+                  )),
+              Positioned(
+                  top: 0,
+                  right: 0,
+                  child: Container(
+                    height: 150,
+                    width: 150,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(75),
+                        color: Colors.green[100].withOpacity(0.1)),
+                  )),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                    height: 70.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "Ingodo yanje",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Container(),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+                    child: Container(
+                      height: 100,
+                      width: MediaQuery.of(context).size.width,
+                      child: Material(
+                        elevation: 2.0,
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5.0),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 25),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Available Balance',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black54),
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Text(
+                                    '10 000',
+                                    style: TextStyle(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black),
+                                  ),
+                                  Text(
+                                    'FBU',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black54),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+          getGridView()
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+    );
+  }
+
+  Widget getGridView() {
+    return GridView.count(
+      shrinkWrap: true,
+      crossAxisCount: 2,
+      primary: false,
+      childAspectRatio: (MediaQuery.of(context).size.width - 60 / 2) / 280,
+      children: <Widget>[
+        createTile(
+            0, _selectedIndex, false, 'Entrée', Colors.purple, Icons.login),
+        createTile(
+            1, _selectedIndex, true, 'Sortie', Colors.yellow, Icons.logout),
+        createTile(2, _selectedIndex, false, 'Operations', Colors.brown,
+            Icons.calculate),
+        createTile(
+            3, _selectedIndex, true, 'langues', Colors.blue, Icons.language),
+      ],
+    );
+  }
+
+  int _selectedIndex = -1;
+  Widget createTile(int index, int selectedIndex, bool isEven, String title,
+      Color color, IconData icon) {
+    return Padding(
+      padding: EdgeInsets.only(
+          left: isEven ? 10 : 20, right: isEven ? 20 : 10, top: 10, bottom: 10),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        child: GestureDetector(
+          onTap: () {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          child: Material(
+            elevation: 3.0,
+            color: _selectedIndex == index ? Colors.green : Colors.white,
+            borderRadius: BorderRadius.circular(5.0),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Icon(
+                    icon,
+                    color: _selectedIndex == index ? Colors.white : color,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        title,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: _selectedIndex == index
+                                ? Colors.white
+                                : Colors.black),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2.0),
+                        child: Container(
+                          height: 3.0,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(2.0),
+                            color:
+                                _selectedIndex == index ? Colors.green : color,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
